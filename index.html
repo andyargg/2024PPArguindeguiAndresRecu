@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Vehiculos</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <h1>Formulario de Empleados y Clientes</h1>
+
+    <label for="tipo-info">Mostrar:</label>
+    <select id="tipo-info" onchange="filtrarDatos()">
+        <option value="todos">Todos</option>
+        <option value="terrestres">Terrestres</option>
+        <option value="aereos">Aereos</option>
+    </select>
+    <button id="calcular-btn" onclick="calcularVelocidadMaximaPromedio()">Calcular</button>
+    <div id="resultado-velocidad"></div>
+    <button type="button" onclick="cargarDatos()">Cargar datos iniciales</button>
+    <div id="resultado-promedio"></div>
+    <div id="checkboxes">
+        <label><input type="checkbox" id="checkbox-id" checked onchange="toggleColumna(0)"> ID</label>
+        <label><input type="checkbox" id="checkbox-modelo" checked onchange="toggleColumna(1)"> Modelo</label>
+        <label><input type="checkbox" id="checkbox-ano" checked onchange="toggleColumna(2)"> Año fab</label>
+        <label><input type="checkbox" id="checkbox-velMax" checked onchange="toggleColumna(3)"> Vel Max</label>
+        <label><input type="checkbox" id="checkbox-altMax" checked onchange="toggleColumna(4)"> Alt Max / Autonomía</label>
+        <label><input type="checkbox" id="checkbox-cantPue" checked onchange="toggleColumna(5)"> Cant Pue / Cant Rue</label>
+    </div>
+    <form>
+        <table class="material-table">
+            <thead>
+                <tr>
+                    <th onclick="ordenarColumna(0)">ID</th>
+                    <th onclick="ordenarColumna(1)">Modelo</th>
+                    <th onclick="ordenarColumna(2)">Año fab</th>
+                    <th onclick="ordenarColumna(3)">Vel Max</th>
+                    <th onclick="ordenarColumna(4)">Alt Max / Autonomía</th>
+                    <th onclick="ordenarColumna(5)">Cant Pue / Cant Rue</th>
+                </tr>
+            </thead>
+            <tbody id="tabla-datos">
+                <!-- Las filas se agregarán dinámicamente aquí -->
+            </tbody>
+        </table>
+    </form>
+
+    <h2>Formulario ABM</h2>
+    <form id="form-abm">
+        <select id="tipo-registro" onchange="actualizarFormulario()">
+            <option value="Ninguno">Ninguno</option>
+            <option value="Terrestre">Terrestre</option>
+            <option value="Aereo">Aereo</option>
+        </select>
+        
+        <div id="datos-aereo" style="display: none;">
+            <input type="text" id="modelo-aereo" placeholder="modelo" required />
+            <input type="text" id="año-aereo" placeholder="año" required />
+            <input type="number" id="velmax-aereo" placeholder="velmax" required />
+            <input type="number" id="alt-max" placeholder="alt" />
+            <input type="number" id="autonomia" placeholder="autonomia" />
+        </div>
+        
+        <div id="datos-terrestre" style="display: none;">
+            <input type="text" id="modelo-terrestre" placeholder="modelo" required />
+            <input type="text" id="año-terrestre" placeholder="año" required />
+            <input type="number" id="velmax-terrestre" placeholder="velmax" required />
+            <input type="number" id="cant-pue" placeholder="puertas" />
+            <input type="text" id="cant-rue" placeholder="ruedas" />
+        </div>
+        
+        <button type="button" id="agregar-btn" onclick="agregarRegistro()">Agregar</button>
+    </form>
+
+    <script src="script.js"></script>
+</body>
+</html>

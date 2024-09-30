@@ -1,0 +1,22 @@
+table {
+    width: 100%;
+    border-collapse: collapse; /* Asegura que los bordes estén colapsados */
+}
+
+table, th, td {
+    border: 1px solid black; /* Borde negro alrededor de la tabla y las celdas */
+}
+
+th, td {
+    padding: 10px; /* Espacio dentro de las celdas */
+    text-align: left; /* Alinea el texto a la izquierda */
+}
+
+h1 {
+    text-align: center;
+}
+
+select {
+    margin-bottom: 20px; /* Espacio debajo del botón desplegable */
+    display: block;
+}
