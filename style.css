@@ -1,0 +1,70 @@
+    body {
+        font-family: 'Arial', sans-serif;
+        background-color: #f5f5f5;
+        margin: 0;
+        padding: 20px;
+    }
+
+    h1 {
+        color: #333;
+        text-align: center;
+    }
+
+    label {
+        margin-right: 10px;
+    }
+
+    select, input[type="text"], input[type="number"], button {
+        padding: 10px;
+        border-radius: 4px;
+        border: 1px solid #ccc;
+        margin: 5px 0;
+        width: calc(100% - 24px);
+    }
+
+    select:focus, input[type="text"]:focus, input[type="number"]:focus {
+        border-color: #007bff;
+        outline: none;
+    }
+
+    button {
+        background-color: #007bff;
+        color: white;
+        border: none;
+        cursor: pointer;
+    }
+
+    button:hover {
+        background-color: #0056b3;
+    }
+
+    #tablaVehiculos {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+    }
+
+    #tablaVehiculos th, #tablaVehiculos td {
+        padding: 10px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+    }
+
+    #tablaVehiculos th {
+        background-color: #007bff;
+        color: white;
+        cursor: pointer;
+    }
+
+    #tablaVehiculos tr:hover {
+        background-color: #f1f1f1;
+    }
+
+    #formCheckboxes {
+        margin-top: 20px;
+    }
+
+    #formCheckboxes label {
+        display: inline-block;
+        margin: 0 10px 10px 0;
+    }

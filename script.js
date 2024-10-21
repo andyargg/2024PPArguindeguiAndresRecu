@@ -34,6 +34,34 @@ function cargarTabla(vehiculos) {
         tbody.appendChild(fila);
     });
 }
+function agregarVehiculo() {
+    const id = generarID(); 
+    const modelo = document.getElementById('modelo').value;
+    const anoFab = parseInt(document.getElementById('anoFab').value);
+    const velMax = parseInt(document.getElementById('vel-max').value);
+    const tipo = document.getElementById('tipo').value;
+
+    const nuevoVehiculo = {
+        id: id,
+        modelo: modelo,
+        anoFab: anoFab,
+        velMax: velMax
+    };
+
+    if (tipo === 'terrestre') {
+        nuevoVehiculo.cantPue = parseInt(document.getElementById('cantPue').value) || 0;
+        nuevoVehiculo.cantRue = parseInt(document.getElementById('cantRue').value) || 0;
+    } else {
+        nuevoVehiculo.altMax = parseInt(document.getElementById('altMax').value) || 0;
+        nuevoVehiculo.autonomia = parseInt(document.getElementById('autonomia').value) || 0;
+    }
+
+    vehiculos.push(nuevoVehiculo); 
+    cargarTabla(vehiculos); 
+    document.getElementById('vehiculoForm').reset(); 
+    mostrarCampos(); 
+    document.getElementById('mensaje').innerText = 'Vehículo agregado correctamente!';
+}
 
 
 function filtrarDatos() {
@@ -148,15 +176,54 @@ function modificarVehiculo() {
             vehiculoModificado.autonomia = parseInt(document.getElementById('autonomia').value) || 0;
         }
 
-        vehiculos[vehiculoIndex] = vehiculoModificado; // Actualiza el vehículo en el array
-        cargarTabla(vehiculos); // Recarga la tabla
-        document.getElementById('vehiculoForm').reset(); // Reinicia el formulario
-        mostrarCampos(); // Muestra los campos correspondientes
+        vehiculos[vehiculoIndex] = vehiculoModificado; 
+        cargarTabla(vehiculos); 
+        document.getElementById('vehiculoForm').reset();
+        mostrarCampos(); 
         document.getElementById('mensaje').innerText = 'Vehículo modificado correctamente!';
     } else {
         document.getElementById('mensaje').innerText = 'ID no encontrado.';
     }
 }
+
+let ordenAscendente = true;
+
+function ordenarTabla(columna) {
+    vehiculos.sort((a, b) => {
+        let valorA = a[columna] !== undefined ? a[columna] : (typeof a[columna] === 'string' ? '' : 0);
+        let valorB = b[columna] !== undefined ? b[columna] : (typeof b[columna] === 'string' ? '' : 0);
+
+        if (typeof valorA === 'number' && typeof valorB === 'number') {
+            return ordenAscendente ? valorA - valorB : valorB - valorA;
+        }
+        
+        if (typeof valorA === 'string' && typeof valorB === 'string') {
+            return ordenAscendente ? valorA.localeCompare(valorB) : valorB.localeCompare(valorA);
+        }
+
+        return 0;
+    });
+
+    ordenAscendente = !ordenAscendente;
+
+    cargarTabla(vehiculos);
+}
+
+function alternarColumna(checkbox) {
+    const columna = checkbox.getAttribute('data-column');
+    const tabla = document.getElementById('tablaVehiculos');
+
+    for (let i = 0; i < tabla.rows.length; i++) {
+        const celda = tabla.rows[i].cells[columna];
+        if (checkbox.checked) {
+            celda.style.display = ''; 
+        } else {
+            celda.style.display = 'none';
+        }
+    }
+}
+
+
 
 
 

@@ -4,23 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Formulario Automóviles</title>
-    <style>
-        table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-        th, td {
-            border: 1px solid black;
-            padding: 8px;
-            text-align: center;
-        }
-        th {
-            background-color: #f2f2f2;
-        }
-        #Resultado {
-            margin-top: 20px;
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
+    
 </head>
 <body>
     <h1>Formulario Automóviles</h1>
@@ -39,19 +24,19 @@
     <table id="tablaVehiculos">
         <thead>
             <tr>
-                <th>ID</th>
-                <th>Modelo</th>
-                <th>Año de Fabricación</th>
-                <th>Velocidad Máxima</th>
-                <th>Cantidad de Puertas</th>
-                <th>Cantidad de Ruedas</th>
-                <th>Altura Máxima</th>
-                <th>Autonomía</th>
+                <th onclick="ordenarTabla('id')">ID</th>
+                <th onclick="ordenarTabla('modelo')">Modelo</th>
+                <th onclick="ordenarTabla('anoFab')">Año de Fabricación</th>
+                <th onclick="ordenarTabla('velMax')">Velocidad Máxima</th>
+                <th onclick="ordenarTabla('cantPue')">Cantidad de Puertas</th>
+                <th onclick="ordenarTabla('cantRue')">Cantidad de Ruedas</th>
+                <th onclick="ordenarTabla('altMax')">Altura Máxima</th>
+                <th onclick="ordenarTabla('autonomia')">Autonomía</th>
                 <th></th>
             </tr>
         </thead>
         <tbody>
-            <!-- Aquí se insertarán los datos -->
+            <!--  -->
         </tbody>
     </table>
     <form id="vehiculoForm">
@@ -91,6 +76,18 @@
         <button type="button" onclick="agregarVehiculo()">Agregar Vehículo</button>
         <button type="button" onclick="modificarVehiculo()">Modificar Vehículo</button>
     </form>
+    <form id="formCheckboxes">
+        <label><input type="checkbox" class="colToggle" data-column="0" onchange="alternarColumna(this)" checked>ID</label>
+        <label><input type="checkbox" class="colToggle" data-column="1" onchange="alternarColumna(this)" checked>Modelo</label>
+        <label><input type="checkbox" class="colToggle" data-column="2" onchange="alternarColumna(this)" checked>Año de Fabricación</label>
+        <label><input type="checkbox" class="colToggle" data-column="3" onchange="alternarColumna(this)" checked>Velocidad Máxima</label>
+        <label><input type="checkbox" class="colToggle" data-column="4" onchange="alternarColumna(this)" checked>Cantidad de Puertas</label>
+        <label><input type="checkbox" class="colToggle" data-column="5" onchange="alternarColumna(this)" checked>Cantidad de Ruedas</label>
+        <label><input type="checkbox" class="colToggle" data-column="6" onchange="alternarColumna(this)" checked>Altura Máxima</label>
+        <label><input type="checkbox" class="colToggle" data-column="7" onchange="alternarColumna(this)" checked>Autonomía</label>
+    </form>
+    
+    
     <script src="script.js"></script>
 </body>
 </html>
